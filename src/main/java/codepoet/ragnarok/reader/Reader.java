@@ -9,6 +9,9 @@ import codepoet.ragnarok.reader.display.RichText;
 import codepoet.vaultmonkey.service.SqliteDataService;
 import codepoet.vaultmonkey.util.SqliteConnectionUtil;
 import java.sql.Connection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Reader {
 
@@ -26,7 +29,17 @@ public class Reader {
 
 	public void read() {
 
-		RichText message = new RichText("Welcome to the Ragnarok Reader", DisplayColor.PURPLE, DisplaySpeed.SLOW);
+		Area area = areaDataService.read(1);
+		Map<String, String> search = new HashMap<>();
+		search.put("areaAId", String.valueOf(area.getEntityId()));
+		List<Path> paths = pathDataService.read(search);
+
+		RichText message = new RichText(area.getDescription(), DisplayColor.PURPLE, DisplaySpeed.SLOW);
 		display.write(message);
+
+		for (Path path : paths) {
+			RichText pathMessage = new RichText(path.getName(), DisplayColor.GREEN, DisplaySpeed.SLOW);
+			display.write(pathMessage);
+		}
 	}
 }

@@ -8,6 +8,7 @@ import codepoet.ragnarok.reader.display.DisplaySpeed;
 import codepoet.ragnarok.reader.display.RichText;
 import codepoet.vaultmonkey.service.SqliteDataService;
 import codepoet.vaultmonkey.util.SqliteConnectionUtil;
+import java.io.IOException;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;
@@ -15,10 +16,9 @@ import java.util.Map;
 
 public class Reader {
 
-	private SqliteDataService<Area> areaDataService;
-	private SqliteDataService<Path> pathDataService;
-
-	private DisplayInterface display;
+	private final SqliteDataService<Area> areaDataService;
+	private final SqliteDataService<Path> pathDataService;
+	private final DisplayInterface display;
 
 	public Reader(final DisplayInterface display, final String archive) throws Exception {
 		this.display = display;
@@ -27,19 +27,30 @@ public class Reader {
 		this.pathDataService = new SqliteDataService<>(Path.class, connection);
 	}
 
-	public void read() {
+	public void read() throws IOException {
 
-		Area area = areaDataService.read(1);
-		Map<String, String> search = new HashMap<>();
-		search.put("areaAId", String.valueOf(area.getEntityId()));
-		List<Path> paths = pathDataService.read(search);
+		Integer areaId = 1;
 
-		RichText message = new RichText(area.getDescription(), DisplayColor.PURPLE, DisplaySpeed.SLOW);
-		display.write(message);
+		while (areaId != null) {
+			Area area = areaDataService.read(areaId);
+			Map<String, String> search = new HashMap<>();
+			search.put("areaAId", String.valueOf(area.getEntityId()));
+			List<Path> paths = pathDataService.read(search);
 
-		for (Path path : paths) {
-			RichText pathMessage = new RichText(path.getName(), DisplayColor.GREEN, DisplaySpeed.SLOW);
-			display.write(pathMessage);
+			RichText message = new RichText(area.getDescription(), DisplayColor.PURPLE, DisplaySpeed.SLOW);
+			display.write(message);
+
+			String input = display.prompt(" > ");
+
+			areaId = null;
+			for (Path path : paths) {
+				if (path.getName().equalsIgnoreCase(input)) {
+					areaId = path.getAreaBId();
+				}
+			}
 		}
+
+		RichText theEnd = new RichText("THE END", DisplayColor.RED, DisplaySpeed.SLOW);
+		display.write(theEnd);
 	}
 }

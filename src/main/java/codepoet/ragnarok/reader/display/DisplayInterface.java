@@ -1,14 +1,16 @@
 package codepoet.ragnarok.reader.display;
 
+import java.io.IOException;
+
 public interface DisplayInterface {
 
 	public void write(String text);
 
 	public void write(RichText text);
 
-	public void prompt();
+	public String prompt() throws IOException;
 
-	public void prompt(String text);
+	public String prompt(String text) throws IOException;
 
-	public void prompt(RichText text);
+	public String prompt(RichText text) throws IOException;
 }

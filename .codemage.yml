@@ -1,7 +1,9 @@
 spells:
-- name: clean
-  cmd: gradle clean
 - name: build
   cmd: gradle build
 - name: test
   cmd: gradle test
+- name: clean
+  cmd: gradle clean
+- name: run
+  cmd: java -jar build/libs/ragnareader-all.jar

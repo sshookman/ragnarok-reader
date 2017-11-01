@@ -6,4 +6,4 @@ spells:
 - name: clean
   cmd: gradle clean
 - name: run
-  cmd: java -jar build/libs/ragnareader-all.jar
+  cmd: java -jar build/libs/ragnarok-reader-all.jar

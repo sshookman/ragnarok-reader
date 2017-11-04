@@ -1,4 +1,4 @@
-package codepoet.ragnarok.reader.bo;
+package codepoet.ragnarok.reader.dbo;
 
 import codepoet.vaultmonkey.annotations.SqliteColumn;
 import codepoet.vaultmonkey.annotations.SqliteObject;
@@ -11,7 +11,9 @@ public class Path {
 	@SqliteColumn
 	private Integer entityId;
 	@SqliteColumn
-	private String name;
+	private String nameA;
+	@SqliteColumn
+	private String nameB;
 	@SqliteColumn
 	private Integer areaAId;
 	@SqliteColumn
@@ -33,12 +35,20 @@ public class Path {
 		this.entityId = entityId;
 	}
 
-	public String getName() {
-		return name;
+	public String getNameA() {
+		return nameA;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNameA(String nameA) {
+		this.nameA = nameA;
+	}
+
+	public String getNameB() {
+		return nameB;
+	}
+
+	public void setNameB(String nameB) {
+		this.nameB = nameB;
 	}
 
 	public Integer getAreaAId() {

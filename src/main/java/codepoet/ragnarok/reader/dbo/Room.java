@@ -1,10 +1,10 @@
-package codepoet.ragnarok.reader.bo;
+package codepoet.ragnarok.reader.dbo;
 
 import codepoet.vaultmonkey.annotations.SqliteColumn;
 import codepoet.vaultmonkey.annotations.SqliteObject;
 
-@SqliteObject(table = "area")
-public class Area {
+@SqliteObject(table = "room")
+public class Room {
 
 	@SqliteColumn
 	private Integer id;
@@ -13,7 +13,7 @@ public class Area {
 	@SqliteColumn
 	private String name;
 	@SqliteColumn
-	private String description;
+	private String content;
 
 	public Integer getId() {
 		return id;
@@ -39,11 +39,11 @@ public class Area {
 		this.name = name;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getContent() {
+		return content;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setContent(String content) {
+		this.content = content;
 	}
 }

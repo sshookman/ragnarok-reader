@@ -1,15 +1,12 @@
 package codepoet.ragnarok.reader;
 
-import codepoet.ragnarok.reader.dbo.Path;
-import codepoet.ragnarok.reader.dbo.Room;
+import java.io.IOException;
+
+import codepoet.ragnarok.reader.dbo.Title;
 import codepoet.ragnarok.reader.display.DisplayColor;
 import codepoet.ragnarok.reader.display.DisplayInterface;
 import codepoet.ragnarok.reader.display.DisplaySpeed;
 import codepoet.ragnarok.reader.display.RichText;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Reader {
 
@@ -23,7 +20,7 @@ public class Reader {
 
 	public void read() throws IOException {
 
-		String selection = storyService.getTitle();
+		String selection = title(storyService.getTitle());		/*
 		Integer areaId = selection.equalsIgnoreCase("N") ? 1 : null;
 
 		while (areaId != null) {
@@ -44,13 +41,13 @@ public class Reader {
 				}
 			}
 		}
-
+		 */
 		RichText thanks = new RichText("Thanks for playing...", DisplayColor.GREEN, DisplaySpeed.SLOW);
 		display.write(thanks);
 	}
 
-	private String title() throws IOException {
-		display.write("!!!TITLE HERE!!!");
+	private String title(Title title) throws IOException {
+		display.write(title.getName());
 		display.write("[N]EW GAME");
 		display.write("[E]XIT");
 

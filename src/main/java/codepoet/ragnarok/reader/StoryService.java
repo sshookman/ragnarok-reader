@@ -11,7 +11,7 @@ class StoryService {
 	private SqliteDataService<Title> titleDataService;
 
 	public StoryService(final String archive) throws Exception {
-		Connection connection = SqliteConnectionUtil.establishConnection(archive);
+		final Connection connection = SqliteConnectionUtil.establishConnection(archive);
 		this.titleDataService = new SqliteDataService<>(Title.class, connection);
 	}
 	

@@ -2,6 +2,12 @@ CREATE TABLE entity (
     id integer PRIMARY KEY
 );
 
+CREATE TABLE title (
+	id integer PRIMARY KEY,
+	name text NOT NULL,
+	tags text NOT NULL
+);
+
 CREATE TABLE chapter (
     id integer PRIMARY KEY,
     title text NOT NULL,

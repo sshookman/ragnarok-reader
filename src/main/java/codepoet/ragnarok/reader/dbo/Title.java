@@ -11,7 +11,7 @@ public class Title {
 	@SqliteColumn
 	private String name;
 	@SqliteColumn
-	private String tag;
+	private String tags;
 
 	public String getName() {
 		return name;
@@ -21,11 +21,11 @@ public class Title {
 		this.name = name;
 	}
 
-	public String getTag() {
-		return tag;
+	public String getTags() {
+		return tags;
 	}
 
-	public void setTag(String tag) {
-		this.tag = tag;
+	public void setTag(String tags) {
+		this.tags = tags;
 	}
 }

@@ -6,7 +6,7 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 
-		Reader reader = new Reader(new ConsoleDisplay(System.console()), "archives/Test.rag");
+		Reader reader = new Reader(new ConsoleDisplay(System.console()), "archives/Dragonfly.rgn");
 		reader.read();
 	}
 }

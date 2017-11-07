@@ -20,7 +20,8 @@ public class Reader {
 
 	public void read() throws IOException {
 
-		String selection = title(storyService.getTitle());		/*
+		String selection = title(storyService.getTitle());	
+		/*
 		Integer areaId = selection.equalsIgnoreCase("N") ? 1 : null;
 
 		while (areaId != null) {

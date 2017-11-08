@@ -2,6 +2,7 @@ package codepoet.ragnarok.reader;
 
 import java.io.IOException;
 
+import codepoet.ragnarok.reader.bo.RoomExpanded;
 import codepoet.ragnarok.reader.dbo.Title;
 import codepoet.ragnarok.reader.display.DisplayColor;
 import codepoet.ragnarok.reader.display.DisplayInterface;
@@ -21,37 +22,23 @@ public class Reader {
 	public void read() throws IOException {
 
 		String selection = title(storyService.getTitle());	
-		/*
-		Integer areaId = selection.equalsIgnoreCase("N") ? 1 : null;
+		Integer roomId = selection.equalsIgnoreCase("P") ? 1 : null;
 
-		while (areaId != null) {
-			Room room = roomDataService.read(areaId);
-			Map<String, String> search = new HashMap<>();
-			search.put("areaAId", String.valueOf(room.getEntityId()));
-			List<Path> paths = pathDataService.read(search);
-
-			RichText message = new RichText(room.getContent(), DisplayColor.PURPLE, DisplaySpeed.SLOW);
-			display.write(message);
-
-			String input = display.prompt(" > ");
-
-			areaId = null;
-			for (Path path : paths) {
-				if (path.getNameA().equalsIgnoreCase(input)) {
-					areaId = path.getAreaBId();
-				}
-			}
+		while (roomId != null) {
+			RoomExpanded room = storyService.getRoom(roomId);
+			display.write(room.getContent());
+			display.prompt();
+			roomId = null;
 		}
-		 */
+
 		RichText thanks = new RichText("Thanks for playing...", DisplayColor.GREEN, DisplaySpeed.SLOW);
 		display.write(thanks);
 	}
 
 	private String title(Title title) throws IOException {
 		display.write(title.getName());
-		display.write("[N]EW GAME");
+		display.write("[P]LAY");
 		display.write("[E]XIT");
-
-		return display.prompt(" > ");
+		return display.prompt();
 	}
 }

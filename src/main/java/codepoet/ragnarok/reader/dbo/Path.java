@@ -9,15 +9,11 @@ public class Path {
 	@SqliteColumn
 	private Integer id;
 	@SqliteColumn
-	private Integer entityId;
+	private String name;
 	@SqliteColumn
-	private String nameA;
+	private Integer roomId;
 	@SqliteColumn
-	private String nameB;
-	@SqliteColumn
-	private Integer areaAId;
-	@SqliteColumn
-	private Integer areaBId;
+	private Integer destRoomId;
 
 	public Integer getId() {
 		return id;
@@ -27,43 +23,27 @@ public class Path {
 		this.id = id;
 	}
 
-	public Integer getEntityId() {
-		return entityId;
+	public String getName() {
+		return name;
 	}
 
-	public void setEntityId(Integer entityId) {
-		this.entityId = entityId;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getNameA() {
-		return nameA;
+	public Integer getRoomId() {
+		return roomId;
 	}
 
-	public void setNameA(String nameA) {
-		this.nameA = nameA;
+	public void setRoomId(Integer roomId) {
+		this.roomId = roomId;
 	}
 
-	public String getNameB() {
-		return nameB;
+	public Integer getDestRoomId() {
+		return destRoomId;
 	}
 
-	public void setNameB(String nameB) {
-		this.nameB = nameB;
-	}
-
-	public Integer getAreaAId() {
-		return areaAId;
-	}
-
-	public void setAreaAId(Integer areaAId) {
-		this.areaAId = areaAId;
-	}
-
-	public Integer getAreaBId() {
-		return areaBId;
-	}
-
-	public void setAreaBId(Integer areaBId) {
-		this.areaBId = areaBId;
+	public void setDestRoomId(Integer destRoomId) {
+		this.destRoomId = destRoomId;
 	}
 }

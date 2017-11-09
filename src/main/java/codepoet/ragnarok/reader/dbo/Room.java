@@ -9,7 +9,7 @@ public class Room {
 	@SqliteColumn
 	private Integer id;
 	@SqliteColumn
-	private Integer entityId;
+	private Integer chapterId;
 	@SqliteColumn
 	private String name;
 	@SqliteColumn
@@ -23,12 +23,12 @@ public class Room {
 		this.id = id;
 	}
 
-	public Integer getEntityId() {
-		return entityId;
+	public Integer getChapterId() {
+		return chapterId;
 	}
 
-	public void setEntityId(Integer entityId) {
-		this.entityId = entityId;
+	public void setChapterId(Integer chapterId) {
+		this.chapterId = chapterId;
 	}
 
 	public String getName() {

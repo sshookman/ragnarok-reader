@@ -2,7 +2,8 @@ package codepoet.ragnarok.reader;
 
 import java.io.IOException;
 
-import codepoet.ragnarok.reader.bo.RoomExpanded;
+import codepoet.ragnarok.reader.dbo.Chapter;
+import codepoet.ragnarok.reader.dbo.Room;
 import codepoet.ragnarok.reader.dbo.Title;
 import codepoet.ragnarok.reader.display.DisplayColor;
 import codepoet.ragnarok.reader.display.DisplayInterface;
@@ -22,13 +23,13 @@ public class Reader {
 	public void read() throws IOException {
 
 		String selection = title(storyService.getTitle());	
-		Integer roomId = selection.equalsIgnoreCase("P") ? 1 : null;
+		Chapter chapter = storyService.getChapter(1);
+		Room room = storyService.getRoom(chapter.getStartRoomId());
 
-		while (roomId != null) {
-			RoomExpanded room = storyService.getRoom(roomId);
+		while (room != null) {
 			display.write(room.getContent());
 			display.prompt();
-			roomId = null;
+			room = null;
 		}
 
 		RichText thanks = new RichText("Thanks for playing...", DisplayColor.GREEN, DisplaySpeed.SLOW);

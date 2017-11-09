@@ -9,28 +9,18 @@ public class Chapter {
 	@SqliteColumn
 	private Integer id;
 	@SqliteColumn
-	private Integer entityId;
-	@SqliteColumn
 	private String name;
 	@SqliteColumn
 	private String content;
 	@SqliteColumn
-	private Integer ind;
-
+	private Integer startRoomId;
+	
 	public Integer getId() {
 		return id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getEntityId() {
-		return entityId;
-	}
-
-	public void setEntityId(Integer entityId) {
-		this.entityId = entityId;
 	}
 
 	public String getName() {
@@ -49,11 +39,11 @@ public class Chapter {
 		this.content = content;
 	}
 
-	public Integer getInd() {
-		return ind;
+	public Integer getStartRoomId() {
+		return startRoomId;
 	}
 
-	public void setInd(Integer ind) {
-		this.ind = ind;
+	public void setStartRoomId(Integer startRoomId) {
+		this.startRoomId = startRoomId;
 	}
 }

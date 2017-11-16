@@ -9,6 +9,8 @@ public class Path {
 	@SqliteColumn
 	private Integer id;
 	@SqliteColumn
+	private Integer chapterId;
+	@SqliteColumn
 	private String name;
 	@SqliteColumn
 	private Integer roomId;
@@ -21,6 +23,14 @@ public class Path {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Integer getChapterId() {
+		return chapterId;
+	}
+
+	public void setChapterId(Integer chapterId) {
+		this.chapterId = chapterId;
 	}
 
 	public String getName() {

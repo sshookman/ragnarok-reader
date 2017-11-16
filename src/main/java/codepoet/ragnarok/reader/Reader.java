@@ -24,7 +24,7 @@ public class Reader {
 
 		String selection = title(storyService.getTitle());	
 		Chapter chapter = storyService.getChapter(1);
-		Room room = storyService.getRoom(chapter.getStartRoomId());
+		Room room = storyService.getRoom(1);
 
 		while (room != null) {
 			display.write(room.getContent());

@@ -12,8 +12,6 @@ public class Chapter {
 	private String name;
 	@SqliteColumn
 	private String content;
-	@SqliteColumn
-	private Integer startRoomId;
 	
 	public Integer getId() {
 		return id;
@@ -37,13 +35,5 @@ public class Chapter {
 
 	public void setContent(String content) {
 		this.content = content;
-	}
-
-	public Integer getStartRoomId() {
-		return startRoomId;
-	}
-
-	public void setStartRoomId(Integer startRoomId) {
-		this.startRoomId = startRoomId;
 	}
 }

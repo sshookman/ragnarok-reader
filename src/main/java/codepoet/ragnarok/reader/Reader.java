@@ -2,7 +2,7 @@ package codepoet.ragnarok.reader;
 
 import java.io.IOException;
 
-import codepoet.ragnarok.reader.dbo.Chapter;
+import codepoet.ragnarok.reader.dbo.Path;
 import codepoet.ragnarok.reader.dbo.Room;
 import codepoet.ragnarok.reader.dbo.Title;
 import codepoet.ragnarok.reader.display.DisplayColor;
@@ -42,13 +42,14 @@ public class Reader {
 	}
 	
 	private void play() throws IOException {
-		//Chapter chapter = storyService.getChapter(1);
-		Room room = storyService.getRoom(1);
+		Integer roomId = 1;
 
-		while (room != null) {
+		while (roomId != null) {
+			Room room = storyService.getRoom(roomId);
 			display.write(room.getContent());
-			display.prompt();
-			room = null;
+			String command = display.prompt();
+			Path path = storyService.getPath(roomId, command); //TODO: Need proper command parsing (ideally NLP)
+			roomId = (path != null) ? path.getDestRoomId() : null;
 		}
 	}
 	

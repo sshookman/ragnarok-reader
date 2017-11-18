@@ -22,18 +22,16 @@ public class Reader {
 
 	public void read() throws IOException {
 
-		String selection = title(storyService.getTitle());	
-		Chapter chapter = storyService.getChapter(1);
-		Room room = storyService.getRoom(1);
-
-		while (room != null) {
-			display.write(room.getContent());
-			display.prompt();
-			room = null;
+		while (true) {
+			String selection = title(storyService.getTitle());
+			if (selection.equalsIgnoreCase("P")) {
+				play();
+			} else if (selection.equalsIgnoreCase("E")) {
+				break;
+			}
 		}
-
-		RichText thanks = new RichText("Thanks for playing...", DisplayColor.GREEN, DisplaySpeed.SLOW);
-		display.write(thanks);
+		
+		exit();
 	}
 
 	private String title(Title title) throws IOException {
@@ -41,5 +39,21 @@ public class Reader {
 		display.write("[P]LAY");
 		display.write("[E]XIT");
 		return display.prompt();
+	}
+	
+	private void play() throws IOException {
+		//Chapter chapter = storyService.getChapter(1);
+		Room room = storyService.getRoom(1);
+
+		while (room != null) {
+			display.write(room.getContent());
+			display.prompt();
+			room = null;
+		}
+	}
+	
+	private void exit() {
+		RichText thanks = new RichText("Thanks for playing...", DisplayColor.GREEN, DisplaySpeed.SLOW);
+		display.write(thanks);
 	}
 }

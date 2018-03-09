@@ -16,7 +16,7 @@ public class ConsoleDisplay implements DisplayInterface {
 
 	@Override
 	public void write(String text) {
-		System.out.println("\n" + text);
+		System.out.println(text);
 	}
 
 	@Override

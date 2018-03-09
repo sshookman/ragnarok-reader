@@ -18,9 +18,11 @@ public class Reader {
     private final CommandParser commandParser;
 
 	public Reader(final DisplayInterface display, final String archive) throws Exception {
+        display.write("Loading Ragnarok Reader...");
 		this.display = display;
 		this.storyService = new StoryService(archive);
-        this.commandParser = new CommandParser(display);
+        this.commandParser = new CommandParser();
+        display.write("--------------------------");
 	}
 
 	public void read() throws IOException {
@@ -51,10 +53,10 @@ public class Reader {
 			Room room = storyService.getRoom(roomId);
 			display.write(room.getContent());
 			String command = display.prompt();
-            // TODO: Testing command parsing via OpenNLP
-            display.write("Parsing command...");
-            display.write(commandParser.parse(command)[0]);
-            display.write("Parsed");
+            String[] tags = commandParser.parse(command);
+            for (String tag:tags) {
+                display.write(tag);
+            }
 			Path path = storyService.getPath(roomId, command); 
 			roomId = (path != null) ? path.getDestRoomId() : null;
 		}

@@ -2,6 +2,7 @@ package codepoet.ragnarok.reader;
 
 import java.io.IOException;
 
+import codepoet.ragnarok.reader.command.CommandParser;
 import codepoet.ragnarok.reader.dbo.Path;
 import codepoet.ragnarok.reader.dbo.Room;
 import codepoet.ragnarok.reader.dbo.Title;
@@ -14,10 +15,12 @@ public class Reader {
 
 	private final StoryService storyService;
 	private final DisplayInterface display;
+    private final CommandParser commandParser;
 
 	public Reader(final DisplayInterface display, final String archive) throws Exception {
 		this.display = display;
 		this.storyService = new StoryService(archive);
+        this.commandParser = new CommandParser(display);
 	}
 
 	public void read() throws IOException {
@@ -48,7 +51,11 @@ public class Reader {
 			Room room = storyService.getRoom(roomId);
 			display.write(room.getContent());
 			String command = display.prompt();
-			Path path = storyService.getPath(roomId, command); //TODO: Need proper command parsing (ideally NLP)
+            // TODO: Testing command parsing via OpenNLP
+            display.write("Parsing command...");
+            display.write(commandParser.parse(command)[0]);
+            display.write("Parsed");
+			Path path = storyService.getPath(roomId, command); 
 			roomId = (path != null) ? path.getDestRoomId() : null;
 		}
 	}

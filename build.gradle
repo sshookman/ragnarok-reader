@@ -4,6 +4,7 @@ plugins {
 
 apply plugin: "com.github.johnrengelman.shadow"
 apply plugin: 'java'
+apply plugin: 'jacoco'
 apply plugin: 'application'
 
 jar {
@@ -16,6 +17,13 @@ jar {
         )
     }
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+}
+
 
 sourceCompatibility = '1.8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'

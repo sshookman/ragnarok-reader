@@ -17,6 +17,19 @@ public class CommandParser {
 
     public String[] parse(String command) {
         command = "I " + command;
-        return this.tagger.tag(command.split(" "));
+        String[] tags = this.tagger.tag(command.split(" "));
+
+        String[] vbnn = new String[2];
+        if (tags[1] == "VBP" && tags[2] == "TO") {
+            if (tags[3] == "NN") {
+                vbnn[0] = tags[1];
+                vbnn[1] = tags[3];
+            } else if (tags[3] == "DT" && tags[4] == "NN") {
+                vbnn[0] = tags[1];
+                vbnn[1] = tags[4];
+            }
+        }
+
+        return vbnn;
     }
 }

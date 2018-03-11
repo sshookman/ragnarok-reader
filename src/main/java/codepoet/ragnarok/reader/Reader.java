@@ -52,12 +52,14 @@ public class Reader {
 		while (roomId != null) {
 			Room room = storyService.getRoom(roomId);
 			display.write(room.getContent());
-			String command = display.prompt();
-            String[] tags = commandParser.parse(command);
-            for (String tag:tags) {
-                display.write(tag);
+			String input = display.prompt();
+            String[] command = commandParser.parse(input);
+            if (command != null) {
+                display.write(command[0] + " " + command[1]);
+            } else {
+                display.write("I don't understand...");
             }
-			Path path = storyService.getPath(roomId, command); 
+			Path path = storyService.getPath(roomId, input); 
 			roomId = (path != null) ? path.getDestRoomId() : null;
 		}
 	}

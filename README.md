@@ -38,6 +38,8 @@ Use the OpenNLP library to construct a simple command parser algorithm for inter
 
 ```
 $ ./gradlew clean build
+OR
+$ docker run --rm -v $PWD:/home/gradle/project -w /home/gradle/project gradle gradle build
 ```
 
 #### Running

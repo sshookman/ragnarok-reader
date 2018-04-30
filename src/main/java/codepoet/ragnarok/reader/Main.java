@@ -21,12 +21,14 @@ public class Main {
 
         String player = args[0];
         String game   = args[1];
-        System.out.println(player);
-        System.out.println(game);
 
         String archive      = new StringBuilder().append(archiveFolder).append(game).append(extension).toString();
         String playerFolder = new StringBuilder().append(playersFolder).append(player).append("/").toString();
         String gameFile     = new StringBuilder().append(playerFolder).append(game).append(extension).toString();
+
+        System.out.println("Archive: " + archive);
+        System.out.println("Player Folder: " + archive);
+        System.out.println("Game File: " + gameFile);
         
         if (!Files.exists(Paths.get(archive))) {
             System.out.println("Unable to locate that archive");

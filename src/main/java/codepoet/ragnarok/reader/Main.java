@@ -26,10 +26,6 @@ public class Main {
         String playerFolder = new StringBuilder().append(playersFolder).append(player).append("/").toString();
         String gameFile     = new StringBuilder().append(playerFolder).append(game).append(extension).toString();
 
-        System.out.println("Archive: " + archive);
-        System.out.println("Player Folder: " + archive);
-        System.out.println("Game File: " + gameFile);
-        
         if (!Files.exists(Paths.get(archive))) {
             System.out.println("Unable to locate that archive");
             System.exit(1);

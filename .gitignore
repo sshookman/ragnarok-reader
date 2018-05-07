@@ -16,3 +16,6 @@ gradle-app.setting
 /ragnarok-reader/build/
 /.nb-gradle/
 /bin/
+
+# Project Specific Files
+*.rgn

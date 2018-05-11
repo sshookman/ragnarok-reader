@@ -8,6 +8,7 @@ import codepoet.ragnarok.reader.display.ConsoleDisplay;
 
 public class Main {
 
+    //TODO: Move these to a config file of some sort
     private static final String archiveFolder = "archive/";
     private static final String playersFolder = "players/";
     private static final String extension = ".rgn";
@@ -22,6 +23,8 @@ public class Main {
         String player = args[0];
         String game   = args[1];
 
+        //TODO: Move this to a separate class for managing the archives - ArchiveManager.java
+        //TODO: Add tests for the ArchiveManager class
         String archive      = new StringBuilder().append(archiveFolder).append(game).append(extension).toString();
         String playerFolder = new StringBuilder().append(playersFolder).append(player).append("/").toString();
         String gameFile     = new StringBuilder().append(playerFolder).append(game).append(extension).toString();

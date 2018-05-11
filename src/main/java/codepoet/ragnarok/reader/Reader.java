@@ -11,6 +11,7 @@ import codepoet.ragnarok.reader.display.DisplayInterface;
 import codepoet.ragnarok.reader.display.DisplaySpeed;
 import codepoet.ragnarok.reader.display.RichText;
 
+//TODO: Add test cases for this and split into separate classes as needed
 public class Reader {
 
 	private final StoryService storyService;

@@ -19,3 +19,9 @@ gradle-app.setting
 
 # Project Specific Files
 *.rgn
+.idea/*
+*.iml
+*.jar
+*.bat
+gradlew
+gradle/wrapper/

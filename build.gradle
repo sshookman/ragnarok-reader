@@ -42,4 +42,5 @@ dependencies {
 	compile('codepoet:vault-monkey:1.0.0')
     compile('org.apache.opennlp:opennlp-tools:1.8.4')
     testCompile('junit:junit:4.10')
+    testCompile('org.mockito:mockito-all:1.9.5')
 }

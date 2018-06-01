@@ -4,7 +4,7 @@ import codepoet.ragnarok.reader.display.ConsoleDisplay;
 
 public class Main {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 
         try {
             if (args.length < 2) {
@@ -15,8 +15,8 @@ public class Main {
             String game    = args[1];
             String archive = ArchiveManager.initializeArchive(player, game);
 
-            Reader reader = new Reader(new ConsoleDisplay(System.console()), archive);
-            reader.read();
+            new Reader(new ConsoleDisplay(System.console()), archive).read();
+
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
             System.exit(1);

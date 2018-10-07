@@ -17,4 +17,8 @@ public class Command {
     public String getNoun() {
         return this.noun;
     }
+
+    public String toString() {
+        return new StringBuilder(this.verb).append(" ").append(this.noun).toString();
+    }
 }

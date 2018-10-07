@@ -48,17 +48,24 @@ public class Reader {
 		return display.prompt();
 	}
 	
+    //TODO: Alter game loop to read state each iteration and update based on command
 	private void play() throws IOException {
 		Integer roomId = 1;
 
 		while (roomId != null) {
+            // Read current game state and display
 			Room room = storyService.getRoom(roomId);
 			display.write(room.getContent());
+
+            // Prompt for user input and get the command
 			String input = display.prompt();
             Command command = commandParser.parse(input);
+            display.write(command.toString());
             if (command == null) {
                 display.write("I don't understand...");
             }
+
+            // Update game state based on the command using the associated service
 			Path path = storyService.getPath(roomId, input); 
 			roomId = (path != null) ? path.getDestRoomId() : null;
 		}

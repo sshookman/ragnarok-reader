@@ -2,6 +2,7 @@ package codepoet.ragnarok.reader;
 
 import java.io.IOException;
 
+import codepoet.ragnarok.reader.command.Command;
 import codepoet.ragnarok.reader.command.CommandParser;
 import codepoet.ragnarok.reader.dbo.Path;
 import codepoet.ragnarok.reader.dbo.Room;
@@ -54,10 +55,8 @@ public class Reader {
 			Room room = storyService.getRoom(roomId);
 			display.write(room.getContent());
 			String input = display.prompt();
-            String[] command = commandParser.parse(input);
-            if (command != null) {
-                display.write(command[0] + " " + command[1]);
-            } else {
+            Command command = commandParser.parse(input);
+            if (command == null) {
                 display.write("I don't understand...");
             }
 			Path path = storyService.getPath(roomId, input); 

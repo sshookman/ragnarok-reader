@@ -14,6 +14,6 @@ public class CommandExecutor {
     }
 
     public void executeMove(final String destination) {
-
+        //TODO: Implement Logic to update game state in the database directly - Allow game loop to just read state each loop
     }
 }
